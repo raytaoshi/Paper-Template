@@ -1,0 +1,170 @@
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+% NDSS 2027 中文写作模板，基于 IEEEtran conference 模板修改。
+% Modified for NDSS 2024 by MS on 2024/07/01.
+% Original IEEEtran example by Michael Shell (2015/08/26), LPPL 1.3.
+% IEEEtran.cls 的版权与许可说明见该文件；本文件保留其贡献者署名。
+%
+% Overleaf 使用方法：
+% 1. 上传本文件与 IEEEtran.cls，文件编码保持 UTF-8。
+% 2. 将本文件设为 Main document，将 Compiler 设为 XeLaTeX。
+% 3. 点击 Recompile；交叉引用通常需要编译两次。
+% 本模板用于中文写作，保留原模板的双栏布局与会议页脚。
+
+\documentclass[conference]{IEEEtran}
+
+\usepackage{iftex}
+\ifXeTeX\else
+  \PackageError{NDSS-Chinese}{Please compile with XeLaTeX}{Select XeLaTeX in Overleaf project settings.}
+  \csname @@end\endcsname
+\fi
+
+% 使用 TeX Live / Overleaf 自带字体，不依赖 Windows 的 KaiTi 字体。
+% scheme=plain 保留 IEEEtran 的章节样式与编号。
+\usepackage[UTF8,scheme=plain,fontset=fandol]{ctex}
+\setmainfont{TeX Gyre Termes}
+\setCJKmainfont{FandolKai-Regular.otf}[
+  BoldFont=FandolKai-Regular.otf,
+  BoldFeatures={FakeBold=2},
+  ItalicFont=FandolKai-Regular.otf,
+  BoldItalicFont=FandolKai-Regular.otf,
+  BoldItalicFeatures={FakeBold=2}
+]
+
+\usepackage{amsmath,amssymb}
+\interdisplaylinepenalty=2500
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{cite}
+\usepackage[unicode,hidelinks]{hyperref}
+
+% 中文标签；正文中文默认使用楷体，西文使用 Times 风格字体，数学字体沿用默认设置。
+\renewcommand{\abstractname}{摘要}
+\renewcommand{\refname}{参考文献}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+\pagestyle{plain}
+
+\title{NDSS 2027 中文论文模板\\论文标题填写于此}
+
+% 匿名评审时，可将作者信息替换为“匿名作者”。
+\author{\IEEEauthorblockN{作者一、作者二}
+\IEEEauthorblockA{\mbox{单位名称，院系或实验室}\\
+\mbox{城市，国家或地区}\\
+邮箱：author@example.com}
+\and
+\IEEEauthorblockN{作者三}
+\IEEEauthorblockA{\mbox{单位名称，院系或实验室}\\
+\mbox{城市，国家或地区}\\
+邮箱：author3@example.com}}
+
+% 以下会议出版信息沿用原模板；正式使用时按会议要求更新。
+\IEEEoverridecommandlockouts
+\makeatletter
+\def\@IEEEpubidpullup{6.5\baselineskip}
+\makeatother
+\IEEEpubid{\parbox{\columnwidth}{%
+Network and Distributed System Security (NDSS) Symposium 2027\\
+22--26 March 2027, Seoul, Republic of Korea\\
+ISBN 978-1-970672-09-1\\
+https://dx.doi.org/10.14722/ndss.2027.[23$|$24]xxxx\\
+www.ndss-symposium.org
+}\hspace{\columnsep}\makebox[\columnwidth]{}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+此处填写中文摘要。摘要应简要说明研究背景、需要解决的问题、提出的方法、主要结果及其意义。请将模板中的说明文字替换为论文内容，并确保所有结论都有实际研究证据支持。本模板支持中文、English、数学公式与交叉引用混合排版，中文正文默认使用楷体。
+\end{abstract}
+
+% 沿用原 NDSS 模板：不单独设置关键词栏。
+
+\section{引言}
+\label{sec:introduction}
+此处介绍研究背景、问题的重要性与现有工作的不足，明确本文的研究目标。中文正文使用 Fandol 楷体，无需上传额外字体文件。
+
+随后概述本文的方法与主要贡献，说明论文各部分的组织结构。引用文献可使用 \verb|\cite| 命令，例如文献~\cite{latex-guide}。脚注示例如下。\footnote{此处填写补充说明，脚注同样支持中文。}
+
+\section{背景与相关工作}
+\label{sec:background}
+此处介绍理解本文所需的背景知识，并按照研究主题梳理相关工作。比较现有方法的适用条件、局限性以及与本文工作的关系。
+
+\subsection{问题定义}
+明确研究对象、符号与问题边界。例如，令 $\mathcal{D}=\{(x_i,y_i)\}_{i=1}^{N}$ 表示包含 $N$ 个样本的数据集。
+
+\subsection{威胁模型}
+描述攻击者的目标、知识、能力及限制，并解释系统所依赖的安全假设。
+
+\subsubsection{适用范围}
+此处进一步说明研究适用的场景，以及不在本文讨论范围内的情况。
+
+\section{方法设计}
+\label{sec:method}
+此处介绍方法的总体框架及关键步骤。首先说明各模块的输入与输出，再解释设计选择及其依据。图~\ref{fig:framework} 展示了一个无需外部图片的占位示例。
+
+\begin{figure}[!t]
+  \centering
+  % 使用实际图片时，将下面的方框替换为：
+  % \includegraphics[width=\columnwidth]{figures/framework.pdf}
+  \fbox{\parbox[c][22mm][c]{0.88\columnwidth}{\centering
+  输入数据 $\longrightarrow$ 核心方法 $\longrightarrow$ 输出结果}}
+  \caption{方法总体框架示例。请替换为实际研究中的示意图。}
+  \label{fig:framework}
+\end{figure}
+
+\subsection{核心模块}
+结合公式说明关键计算过程。公式~\eqref{eq:objective} 仅用于展示排版方式，不代表实际研究结果：
+\begin{equation}
+  \mathcal{L}(\theta)=\frac{1}{N}\sum_{i=1}^{N}
+  \ell\bigl(f_{\theta}(x_i),y_i\bigr).
+  \label{eq:objective}
+\end{equation}
+其中，$\theta$ 为模型参数，$f_{\theta}$ 为待优化的模型，$\ell$ 为损失函数。
+
+\section{实验与评估}
+\label{sec:evaluation}
+此处说明实验设置、数据来源、比较方法与评估指标。报告结果时应解释实验重复次数、统计方式及潜在误差来源。
+
+\subsection{实验设置}
+列明软硬件环境、参数配置及复现步骤。表~\ref{tab:results} 给出三线表排版示例；所有数值均应替换为真实实验结果。
+
+\begin{table}[!t]
+  \caption{实验结果占位示例（破折号表示尚未填写）。}
+  \label{tab:results}
+  \centering
+  \renewcommand{\arraystretch}{1.2}
+  \begin{tabular}{lcc}
+    \toprule
+    方法 & 指标一 & 指标二 \\
+    \midrule
+    基线方法 & --- & --- \\
+    本文方法 & --- & --- \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{结果分析}
+围绕研究问题分析结果，解释不同设置下的变化，并结合消融实验讨论各模块的作用。引用章节时可写为“第~\ref{sec:method} 节”。
+
+\section{讨论与局限性}
+讨论方法的适用条件、部署成本、可能的失败情形及有效性威胁。涉及安全或隐私的研究，可在此说明伦理考虑与负责任披露安排。
+
+\section{结论}
+总结研究问题、主要方法与有证据支持的结论，并简要说明后续研究方向。
+
+\section*{致谢}
+此处填写资助信息与致谢内容；匿名评审阶段请按要求隐藏可能暴露作者身份的信息。
+
+% 内置参考文献便于直接编译；如需 BibTeX，可改为：
+% \bibliographystyle{IEEEtran}
+% \bibliography{references}
+\begin{thebibliography}{1}
+\bibitem{latex-guide}
+H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.
+Harlow, England: Addison-Wesley, 1999.
+\end{thebibliography}
+
+\end{document}
+
+
